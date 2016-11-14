@@ -22,16 +22,5 @@ Gem::Specification.new do |s|
   s.summary = %q{A CSS compressor}
   s.test_files = ["spec/rainpress_spec.rb"]
 
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 2
-
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<echoe>, [">= 0"])
-    else
-      s.add_dependency(%q<echoe>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<echoe>, [">= 0"])
-  end
+  s.add_development_dependency('echoe', '~> 3.1')
 end
