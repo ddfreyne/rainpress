@@ -20,7 +20,4 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{squishtech}
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{A CSS compressor}
-  s.test_files = ["spec/rainpress_spec.rb"]
-
-  s.add_development_dependency('echoe', '~> 3.1')
 end

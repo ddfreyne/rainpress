@@ -1,6 +1,6 @@
 ENV['MINISPEC'] = 'true'
 
-require File.join(File.dirname(__FILE__), *%w[.. lib rainpress])
+require 'rainpress'
 require 'rubygems'
 require 'minitest/spec'
 
