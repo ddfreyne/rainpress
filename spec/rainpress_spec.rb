@@ -1,12 +1,8 @@
-ENV['MINISPEC'] = 'true'
-
 require 'rainpress'
-require 'rubygems'
+require 'minitest'
 require 'minitest/spec'
 
-include MiniTest
-
-Unit.autorun
+Minitest.autorun
 
 describe 'Rainpress module' do
   it 'removes comments' do
