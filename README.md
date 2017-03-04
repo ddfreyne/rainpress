@@ -1,3 +1,6 @@
+[![Gem version](http://img.shields.io/gem/v/rainpress.svg)](http://rubygems.org/gems/rainpress)
+[![Build status](http://img.shields.io/travis/ddfreyne/rainpress.svg)](https://travis-ci.org/ddfreyne/rainpress)
+
 # Rainpress
 
 Rainpress is a compressor for CSS, written in Ruby. It removes unnecessary characters and replaces some attributes with a shorter equivalent name.
