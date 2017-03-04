@@ -1,8 +1,10 @@
+require_relative 'lib/rainpress/version'
+
 Gem::Specification.new do |s|
   s.name = 'rainpress'
   s.description = 'A CSS compressor'
   s.summary = 'A CSS compressor'
-  s.version = '1.0'
+  s.version = Rainpress::VERSION
   s.authors = ['Uwe L. Korn', 'Jeff Smick', 'Denis Defreyne']
   s.email = 'denis@stoneship.org'
   s.homepage = 'https://github.com/ddfreyne/rainpress'
