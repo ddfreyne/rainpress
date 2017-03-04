@@ -1,20 +1,4 @@
-# == Information
-#
-# This is the main class of Rainpress, create an instance of it to compress
-# your CSS-styles.
-#
-# Author:: Uwe L. Korn <uwelk@xhochy.org>
-#
-# <b>Options:</b>
-#
-# * <tt>:comments</tt> - if set to false, comments will not be removed
-# * <tt>:newlines</tt> - if set to false, newlines will not be removed
-# * <tt>:spaces</tt> - if set to false, spaces will not be removed
-# * <tt>:colors</tt> - if set to false, colors will not be modified
-# * <tt>:misc</tt> - if set to false, miscellaneous compression parts will be skipped
 class Rainpress
-  # Quick-compress the styles.
-  # This eliminates the need to create an instance of the class
   def self.compress(style, options = {})
     self.new(style, options).compress!
   end

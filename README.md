@@ -9,6 +9,14 @@ require 'rainpress'
 compressed_style_text = Rainpress.compress(style_text)
 ```
 
+Options:
+
+* `:comments` — if set to false, comments will not be removed
+* `:newlines` — if set to false, newlines will not be removed
+* `:spaces` — if set to false, spaces will not be removed
+* `:colors` — if set to false, colors will not be modified
+* `:misc` — if set to false, miscellaneous compression parts will be skipped
+
 ## License
 
 Copyright (c) 2007-2008 Uwe L. Korn
