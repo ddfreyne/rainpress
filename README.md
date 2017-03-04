@@ -19,8 +19,11 @@ Options:
 
 ## License
 
-Copyright (c) 2007-2008 Uwe L. Korn
-Copyright (c) 2017 Denis Defreyne
+Copyright (c) 2007–2008 Uwe L. Korn
+
+Copyright (c) 20xx Jeff Smick
+
+Copyright (c) 2017–… Denis Defreyne
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
