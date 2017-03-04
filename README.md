@@ -24,7 +24,7 @@ Options:
 
 Copyright (c) 2007–2008 Uwe L. Korn
 
-Copyright (c) 20xx Jeff Smick
+Copyright (c) 2009-2010 Jeff Smick
 
 Copyright (c) 2017–… Denis Defreyne
 
