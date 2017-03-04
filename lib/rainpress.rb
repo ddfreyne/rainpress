@@ -31,7 +31,7 @@ class Rainpress
   # Attention: If you are doing css hacks for IE using the comment tricks,
   # they will be removed using this function. Please consider for IE css style
   # corrections the usage of conditionals comments in your (X)HTML document.
-	def remove_comments!
+  def remove_comments!
     input = @style
     @style = ''
 
@@ -50,36 +50,36 @@ class Rainpress
         input = input[(pos+2)..-1]
       end
     end
-	end
+  end
 
   # Remove all newline characters
   #
   # We take care of Windows(\r\n), Unix(\n) and Mac(\r) newlines.
-	def remove_newlines!
-		@style.gsub!(/\n|\r/, '')
-	end
+  def remove_newlines!
+  @style.gsub!(/\n|\r/, '')
+  end
 
-	# Remove unneeded spaces
-	#
+  # Remove unneeded spaces
+  #
   # 1. Turn mutiple spaces into a single
   # 2. Remove spaces around ;:{},
   # 3. Remove tabs
   def remove_spaces!
     @style.gsub!(/\s*(\s|;|:|\}|\{|,)\s*/, '\1')
     @style.gsub! "\t", ''
-	end
+  end
 
-	# Replace color values with their shorter equivalent
-	#
-	# 1. Turn rgb(,,)-colors into #-values
-	# 2. Shorten #AABBCC down to #ABC
-	# 3. Replace names with their shorter hex-equivalent
-	#    * white -> #fff
+  # Replace color values with their shorter equivalent
+  #
+  # 1. Turn rgb(,,)-colors into #-values
+  # 2. Shorten #AABBCC down to #ABC
+  # 3. Replace names with their shorter hex-equivalent
+  #    * white -> #fff
  	#    * black -> #000
-	# 4. Replace #-values with their shorter name
-	#    * #f00 -> red
-	def shorten_colors!
-	  # rgb(50,101,152) to #326598
+  # 4. Replace #-values with their shorter name
+  #    * #f00 -> red
+  def shorten_colors!
+    # rgb(50,101,152) to #326598
     @style.gsub!(/rgb\s*\(\s*([0-9,\s]+)\s*\)/) do |match|
       out = '#'
       $1.split(',').each do |num|
