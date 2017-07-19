@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'rainpress'
 require 'minitest'
 require 'minitest/spec'
@@ -7,11 +9,11 @@ Minitest.autorun
 describe 'Rainpress module' do
   it 'removes comments' do
     options = {
-      :comments => true,
-      :newlines => false,
-      :spaces   => false,
-      :colors   => false,
-      :misc     => false
+      comments: true,
+      newlines: false,
+      spaces: false,
+      colors: false,
+      misc: false,
     }
 
     # plain comment -> ''
@@ -32,11 +34,11 @@ describe 'Rainpress module' do
 
   it 'removes newlines' do
     options = {
-      :comments => false,
-      :newlines => true,
-      :spaces   => false,
-      :colors   => false,
-      :misc     => false
+      comments: false,
+      newlines: true,
+      spaces: false,
+      colors: false,
+      misc: false,
     }
 
     # plain unix-newline
@@ -60,11 +62,11 @@ describe 'Rainpress module' do
 
   it 'removes spaces' do
     options = {
-      :comments => false,
-      :newlines => false,
-      :spaces   => true,
-      :colors   => false,
-      :misc     => false
+      comments: false,
+      newlines: false,
+      spaces: true,
+      colors: false,
+      misc: false,
     }
 
     # (a) Turn mutiple Spaces into a single, but not less
@@ -84,11 +86,11 @@ describe 'Rainpress module' do
 
   it 'shortens colors' do
     options = {
-      :comments => false,
-      :newlines => false,
-      :spaces   => false,
-      :colors   => true,
-      :misc     => false
+      comments: false,
+      newlines: false,
+      spaces: false,
+      colors: true,
+      misc: false,
     }
     # rgb(50,101,152) to #326598
     Rainpress.compress('color:rgb(12,101,152)', options).must_equal 'color:#0c6598'
@@ -110,11 +112,11 @@ describe 'Rainpress module' do
 
   it 'does misc' do
     options = {
-      :comments => false,
-      :newlines => false,
-      :spaces   => false,
-      :colors   => false,
-      :misc     => true
+      comments: false,
+      newlines: false,
+      spaces: false,
+      colors: false,
+      misc: true,
     }
     # Replace 0(pt,px,em,%) with 0
     %w[px em pt % in cm mm pc ex].each { |x| Rainpress.compress(" 0#{x}", options).must_equal ' 0' }

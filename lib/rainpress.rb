@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class Rainpress
   def self.compress(style, options = {})
-    self.new(style, options).compress!
+    new(style, options).compress!
   end
 
   def initialize(style, opts = {})
     @style = style
     @opts = {
-      :comments => true,
-      :newlines => true,
-      :spaces   => true,
-      :colors   => true,
-      :misc     => true
+      comments: true,
+      newlines: true,
+      spaces: true,
+      colors: true,
+      misc: true,
     }
     @opts.merge! opts
   end
@@ -35,19 +37,19 @@ class Rainpress
     input = @style
     @style = ''
 
-    while input.length > 0 do
-      pos = input.index("/*");
+    until input.empty?
+      pos = input.index('/*')
 
       # No more comments
-      if pos == nil
+      if pos.nil?
         @style += input
-        input = '';
+        input = ''
       else # Comment beginning at pos
-        @style += input[0..(pos-1)] if pos > 0 # only append text if there is some
-        input = input[(pos+2)..-1]
+        @style += input[0..(pos - 1)] if pos.positive? # only append text if there is some
+        input = input[(pos + 2)..-1]
         # Comment ending at pos
-        pos = input.index("*/")
-        input = input[(pos+2)..-1]
+        pos = input.index('*/')
+        input = input[(pos + 2)..-1]
       end
     end
   end
@@ -56,7 +58,7 @@ class Rainpress
   #
   # We take care of Windows(\r\n), Unix(\n) and Mac(\r) newlines.
   def remove_newlines!
-  @style.gsub!(/\n|\r/, '')
+    @style.gsub!(/\n|\r/, '')
   end
 
   # Remove unneeded spaces
@@ -66,7 +68,7 @@ class Rainpress
   # 3. Remove tabs
   def remove_spaces!
     @style.gsub!(/\s*(\s|;|:|\}|\{|,)\s*/, '\1')
-    @style.gsub! "\t", ''
+    @style.delete! "\t"
   end
 
   # Replace color values with their shorter equivalent
@@ -75,14 +77,14 @@ class Rainpress
   # 2. Shorten #AABBCC down to #ABC
   # 3. Replace names with their shorter hex-equivalent
   #    * white -> #fff
- 	#    * black -> #000
+  #    * black -> #000
   # 4. Replace #-values with their shorter name
   #    * #f00 -> red
   def shorten_colors!
     # rgb(50,101,152) to #326598
-    @style.gsub!(/rgb\s*\(\s*([0-9,\s]+)\s*\)/) do |match|
+    @style.gsub!(/rgb\s*\(\s*([0-9,\s]+)\s*\)/) do |_match|
       out = '#'
-      $1.split(',').each do |num|
+      Regexp.last_match(1).split(',').each do |num|
         out += '0' if num.to_i < 16
         out += num.to_i.to_s(16) # convert to hex
       end
@@ -137,16 +139,15 @@ class Rainpress
     @style.gsub! ';}', '}'
 
     # Replace font-weight:normal; with 400
-    @style.gsub!(/font-weight[\s]*:[\s]*normal[\s]*(;|\})/i,'font-weight:400\1')
+    @style.gsub!(/font-weight[\s]*:[\s]*normal[\s]*(;|\})/i, 'font-weight:400\1')
     @style.gsub!(/font[\s]*:[\s]*normal[\s;\}]*/) do |match|
       match.sub 'normal', '400'
     end
 
     # Replace font-weight:bold; with 700
-    @style.gsub!(/font-weight[\s]*:[\s]*bold[\s]*(;|\})/,'font-weight:700\1')
+    @style.gsub!(/font-weight[\s]*:[\s]*bold[\s]*(;|\})/, 'font-weight:700\1')
     @style.gsub!(/font[\s]*:[\s]*bold[\s;\}]*/) do |match|
       match.sub 'bold', '700'
     end
   end
-
 end

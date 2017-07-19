@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require File.join(File.dirname(__FILE__), *%w[.. lib rainpress])
+require File.join(File.dirname(__FILE__), '..', 'lib', 'rainpress')
 
 STDOUT.sync = true
 
@@ -8,23 +9,17 @@ require 'rubygems'
 require 'optparse'
 
 options = {}
-opts = OptionParser.new do |opts|
-  opts.banner = <<-EOF
-Usage:
-  csspress [options] <inputfile>
+OptionParser.new do |opts|
+  opts.banner = <<EOF.unindent
+    Usage:
+      csspress [options] <inputfile>
 EOF
 
-  opts.on('-c', "--comments", "Keep comments") { options[:comments] = false }
-
-  opts.on('-n', "--newlines", "Keep newlines") { options[:newlines] = false }
-
-  opts.on('-s', "--spaces", "Do NOT compress spaces") { options[:spaces] = false }
-
-  opts.on('-k', "--colors", "Do NOT compress colors") { options[:colors] = false }
-
-  opts.on('-m', "--misc", "Do NOT do misc compression") { options[:misc] = false }
-end
-
-opts.parse!
+  opts.on('-c', '--comments', 'Keep comments') { options[:comments] = false }
+  opts.on('-n', '--newlines', 'Keep newlines') { options[:newlines] = false }
+  opts.on('-s', '--spaces', 'Do NOT compress spaces') { options[:spaces] = false }
+  opts.on('-k', '--colors', 'Do NOT compress colors') { options[:colors] = false }
+  opts.on('-m', '--misc', 'Do NOT do misc compression') { options[:misc] = false }
+end.parse!
 
 puts Rainpress.new(File.read(ARGV[0]), options).compress!
