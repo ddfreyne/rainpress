@@ -1,19 +1,14 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require File.join(File.dirname(__FILE__), '..', 'lib', 'rainpress')
+require 'rainpress'
+require 'optparse'
 
 STDOUT.sync = true
 
-require 'rubygems'
-require 'optparse'
-
 options = {}
 OptionParser.new do |opts|
-  opts.banner = <<EOF.unindent
-    Usage:
-      csspress [options] <inputfile>
-EOF
+  opts.banner = 'usage: csspress [options] <inputfile>'
 
   opts.on('-c', '--comments', 'Keep comments') { options[:comments] = false }
   opts.on('-n', '--newlines', 'Keep newlines') { options[:newlines] = false }

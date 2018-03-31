@@ -45,7 +45,7 @@ class Rainpress
         @style += input
         input = ''
       else # Comment beginning at pos
-        @style += input[0..(pos - 1)] if pos > 0 # only append text if there is some
+        @style += input[0..(pos - 1)] if pos.positive? # only append text if there is some
         input = input[(pos + 2)..-1]
         # Comment ending at pos
         pos = input.index('*/')

@@ -1,18 +1,17 @@
 # ----- CONFIGURED -----
 
 AllCops:
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.3
   DisplayCopNames: true
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
-IndentHeredoc:
-  Enabled: true
-  EnforcedStyle: auto_detection
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
 
 
 

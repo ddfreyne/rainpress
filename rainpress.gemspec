@@ -20,5 +20,7 @@ Gem::Specification.new do |s|
   s.default_executable = 'csspress'
   s.require_paths = ['lib']
 
+  s.required_ruby_version = '~> 2.3'
+
   s.add_development_dependency('bundler', '~> 1.14')
 end
